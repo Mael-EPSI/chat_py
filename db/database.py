@@ -19,7 +19,7 @@ def initialiser_db():
         CREATE TABLE IF NOT EXISTS utilisateurs (
             id           INTEGER PRIMARY KEY AUTOINCREMENT,
             username     TEXT    UNIQUE NOT NULL,
-            email        TEXT    UNIQUE NOT NULL,
+            email        VARCHAR(255)    UNIQUE NOT NULL,
             mdp_hash     TEXT    NOT NULL,
             sel          TEXT    NOT NULL,
             cle_publique TEXT    NOT NULL,
