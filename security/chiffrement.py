@@ -4,6 +4,7 @@ GestionnaireChiffrement
 Gere la generation de paires de cles RSA-2048, le chiffrement OAEP-SHA256,
 le dechiffrement et le hachage SHA-256 des mots de passe.
 """
+import re
 import hashlib
 import os
 
@@ -106,3 +107,16 @@ class GestionnaireChiffrement:
         if not any(c.isdigit() for c in mot_de_passe):
             return False, "Le mot de passe doit contenir au moins un chiffre."
         return True, "OK"
+
+    @staticmethod
+    def email_est_valide(email: str) -> bool:
+        """
+        Verifie si l'adresse email a un format valide via Regex.
+        """
+        # Expression reguliere pour un email standard
+        regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        
+        # On verifie la correspondance
+        if re.match(regex, email):
+            return True
+        return False
